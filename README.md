@@ -1,80 +1,33 @@
-# ash lang
-Ash is a statically typed, minimalistic scripting language designed to simplify and replace complex Bash scripts
+# Ash
 
-## EBNF
-program = { statement } ;
+Ash is a statically typed, minimalistic scripting language designed to simplify and replace complex Bash scripts.
 
-statement = variable_declaration
-          | assignment
-          | if_statement
-          | for_loop
-          | while_loop
-          | print_statement
-          | inline_command
-          ;
+## Features
 
-block = "{" { statement } "}" ;
+- Static typing (`int`, `string`, `bool`)
+- Clean, simple syntax
+- Operator precedence (proper math and logic parsing)
+- Support for `for` and `while` loops
+- Inline terminal command execution with `!`
+- Built-in `echo` and `scan` functions
+- Unambiguous, formally defined grammar (EBNF)
 
-variable_declaration = "let" identifier ":" type [ "=" expression ] ";" ;
+## Example
 
-assignment = identifier "=" expression ";" ;
+```ash
+let name: string = read(string);
 
-if_statement = "if" "(" expression ")" block [ "else" block ] ;
+echo("Hello, " + name);
 
-for_loop = "for" "(" identifier "in" expression ".." expression ")" block ;
+for (i in 0..5) {
+    echo(i);
+}
 
-while_loop = "while" "(" expression ")" block ;
+let ready: bool = true;
 
-print_statement = "print" "(" expression ")" ";" ;
+while (ready) {
+    echo("Running...");
+    ready = false;
+}
 
-inline_command = "!" command_text ;
-
-expression = b_expression ;
-
-b_expression = b_term { "or" b_term } ;
-
-b_term = rel_expression { "and" rel_expression } ;
-
-rel_expression = simple_expression [ rel_op simple_expression ] ;
-
-rel_op = "==" | "!=" | ">" | "<" | ">=" | "<=" ;
-
-simple_expression = term { ("+" | "-") term } ;
-
-term = factor { ("*" | "/") factor } ;
-
-factor = literal
-       | identifier
-       | scan_expression
-       | unary_expression
-       | "(" expression ")" ;
-
-unary_expression = unary_operator factor ;
-
-unary_operator = "+" | "-" | "not" ;
-
-literal = integer
-        | string
-        | boolean ;
-
-scan_expression = "scan" "(" type ")" ;
-
-type = "int" | "string" | "bool" ;
-
-identifier = letter { letter | digit | "_" } ;
-
-integer = digit { digit } ;
-
-string = "\"" { character } "\"" ;
-
-boolean = "true" | "false" ;
-
-command_text = { command_character } ;
-
-letter = "A".."Z" | "a".."z" ;
-
-digit = "0".."9" ;
-
-character = ? any character except " ? ;
-
-command_character = ? any character except newline ? ;
+!ls -la
