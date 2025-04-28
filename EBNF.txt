@@ -12,7 +12,6 @@ statement = variable_declaration
 block = "{" { statement } "}" ;
 
 variable_declaration = "let" identifier ":" type [ "=" expression ] ";" ;
-
 assignment = identifier "=" expression ";" ;
 
 if_statement = "if" "(" expression ")" block [ "else" block ] ;
