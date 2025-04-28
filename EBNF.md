@@ -1,0 +1,76 @@
+program = { statement } ;
+
+statement = variable_declaration
+          | assignment
+          | if_statement
+          | for_loop
+          | while_loop
+          | echo_statement
+          | inline_command
+          ;
+
+block = "{" { statement } "}" ;
+
+variable_declaration = "let" identifier ":" type [ "=" expression ] ";" ;
+
+assignment = identifier "=" expression ";" ;
+
+if_statement = "if" "(" expression ")" block [ "else" block ] ;
+
+for_loop = "for" "(" identifier "in" expression ".." expression ")" block ;
+
+while_loop = "while" "(" expression ")" block ;
+
+echo_statement = "echo" "(" expression ")" ";" ;
+
+inline_command = "!" command_text ;
+
+expression = b_expression ;
+
+b_expression = b_term { "or" b_term } ;
+
+b_term = rel_expression { "and" rel_expression } ;
+
+rel_expression = simple_expression [ rel_op simple_expression ] ;
+
+rel_op = "==" | "!=" | ">" | "<" | ">=" | "<=" ;
+
+simple_expression = term { ("+" | "-") term } ;
+
+term = factor { ("*" | "/") factor } ;
+
+factor = literal
+       | identifier
+       | read_expression
+       | unary_expression
+       | "(" expression ")" ;
+
+unary_expression = unary_operator factor ;
+
+unary_operator = "+" | "-" | "not" ;
+
+literal = integer
+        | string
+        | boolean ;
+
+read_expression = "read" "(" type ")" ;
+
+type = "int" | "string" | "bool" ;
+
+identifier = letter { letter | digit | "_" } ;
+
+integer = digit { digit } ;
+
+string = "\"" { character } "\"" ;
+
+boolean = "true" | "false" ;
+
+command_text = { command_character } ;
+
+letter = "A".."Z" | "a".."z" ;
+
+digit = "0".."9" ;
+
+character = ? any character except " ? ;
+
+command_character = ? any character except newline ? ;
