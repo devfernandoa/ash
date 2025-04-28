@@ -29,3 +29,9 @@ while (ready) {
 }
 
 !ls -la
+
+```
+
+## EBNF
+
+The EBNF for the language is available on EBNF.txt
