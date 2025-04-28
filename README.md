@@ -1,6 +1,7 @@
 # Ash
 
 Ash is a statically typed, minimalistic scripting language designed to simplify and replace complex Bash scripts.
+It compiles natively to bash allowing you to run your scripts as a sh script.
 
 ## Features
 
