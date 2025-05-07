@@ -1,4 +1,4 @@
-program = { statement } ;
+program = { function_declaration | statement } ;
 
 statement = variable_declaration
           | assignment
@@ -6,8 +6,16 @@ statement = variable_declaration
           | for_loop
           | while_loop
           | echo_statement
+          | return_statement
           | inline_command
           ;
+
+function_declaration = type "function" identifier "(" [ parameter_list ] ")" block ;
+
+parameter_list = parameter { "," parameter } ;
+parameter = type identifier ;
+
+return_statement = "return" [ expression ] ";" ;
 
 block = "{" { statement } "}" ;
 
@@ -40,9 +48,14 @@ term = factor { ("*" | "/") factor } ;
 
 factor = literal
        | identifier
+       | function_call
        | read_expression
        | unary_expression
+       | capture_command
        | "(" expression ")" ;
+
+function_call = identifier "(" [ argument_list ] ")" ;
+argument_list = expression { "," expression } ;
 
 unary_expression = unary_operator factor ;
 
@@ -53,8 +66,9 @@ literal = integer
         | boolean ;
 
 read_expression = "read" "(" type ")" ;
+capture_command = "!" "(" command_text ")" ;
 
-type = "int" | "string" | "bool" ;
+type = "int" | "string" | "bool" | "void" ;
 
 identifier = letter { letter | digit | "_" } ;
 
