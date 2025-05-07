@@ -1,0 +1,29 @@
+name: Ash Parser Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Install Flex, Bison, and GCC
+        run: sudo apt-get update && sudo apt-get install -y flex bison build-essential
+
+      - name: Build Ash parser
+        working-directory: ./analysis
+        run: |
+          bison -d ash.y
+          flex ash.l
+          gcc -o ash ash.tab.c lex.yy.c -lfl
+
+      - name: Run test suite
+        working-directory: ./analysis/tests
+        run: |
+          chmod +x run-tests.sh
+          ./run-tests.sh
