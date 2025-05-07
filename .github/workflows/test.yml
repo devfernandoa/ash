@@ -18,9 +18,9 @@ jobs:
       - name: Build Ash parser
         working-directory: ./analysis
         run: |
-          bison -d ash.y
-          flex ash.l
-          gcc -o ash ash.tab.c lex.yy.c -lfl
+          bison -d parser.y
+          flex tokens.l
+          gcc -o ash parser.tab.c lex.yy.c -lfl
 
       - name: Run test suite
         working-directory: ./analysis/tests
