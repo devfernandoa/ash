@@ -35,8 +35,8 @@
    especially those whose name start with YY_ or yy_.  They are
    private implementation details that can be changed or removed.  */
 
-#ifndef YY_YY_ASH_TAB_H_INCLUDED
-# define YY_YY_ASH_TAB_H_INCLUDED
+#ifndef YY_YY_PARSER_TAB_H_INCLUDED
+# define YY_YY_PARSER_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -58,20 +58,20 @@ extern int yydebug;
     STRING = 259,                  /* STRING  */
     INT = 260,                     /* INT  */
     BOOL = 261,                    /* BOOL  */
-    LET = 262,                     /* LET  */
-    FUNCTION = 263,                /* FUNCTION  */
-    IF = 264,                      /* IF  */
-    ELSE = 265,                    /* ELSE  */
-    FOR = 266,                     /* FOR  */
-    WHILE = 267,                   /* WHILE  */
-    RETURN = 268,                  /* RETURN  */
-    IN = 269,                      /* IN  */
-    ECHO_KW = 270,                 /* ECHO_KW  */
-    READ = 271,                    /* READ  */
-    INT_TYPE = 272,                /* INT_TYPE  */
-    STRING_TYPE = 273,             /* STRING_TYPE  */
-    BOOL_TYPE = 274,               /* BOOL_TYPE  */
-    VOID_TYPE = 275,               /* VOID_TYPE  */
+    INT_TYPE = 262,                /* INT_TYPE  */
+    STRING_TYPE = 263,             /* STRING_TYPE  */
+    BOOL_TYPE = 264,               /* BOOL_TYPE  */
+    VOID_TYPE = 265,               /* VOID_TYPE  */
+    LET = 266,                     /* LET  */
+    FUNCTION = 267,                /* FUNCTION  */
+    IF = 268,                      /* IF  */
+    ELSE = 269,                    /* ELSE  */
+    FOR = 270,                     /* FOR  */
+    WHILE = 271,                   /* WHILE  */
+    RETURN = 272,                  /* RETURN  */
+    IN = 273,                      /* IN  */
+    ECHO_KW = 274,                 /* ECHO_KW  */
+    READ = 275,                    /* READ  */
     EQ = 276,                      /* EQ  */
     NEQ = 277,                     /* NEQ  */
     GTE = 278,                     /* GTE  */
@@ -94,7 +94,11 @@ extern int yydebug;
     DOTDOT = 295,                  /* DOTDOT  */
     BANG_LINE = 296,               /* BANG_LINE  */
     BANG_EXPR = 297,               /* BANG_EXPR  */
-    ERROR = 298                    /* ERROR  */
+    OR = 298,                      /* OR  */
+    AND = 299,                     /* AND  */
+    NOT = 300,                     /* NOT  */
+    ERROR = 301,                   /* ERROR  */
+    UNARY = 302                    /* UNARY  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -103,13 +107,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 9 "ash.y"
+#line 9 "parser.y"
 
     int integer;
     int boolean;
     char* str;
 
-#line 113 "ash.tab.h"
+#line 117 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -124,4 +128,4 @@ extern YYSTYPE yylval;
 int yyparse (void);
 
 
-#endif /* !YY_YY_ASH_TAB_H_INCLUDED  */
+#endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */
