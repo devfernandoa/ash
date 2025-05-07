@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Flex, Bison, and GCC
-        run: sudo apt-get update && sudo apt-get install -y flex bison build-essential
+        run: sudo apt-get update && sudo apt-get install -y flex bison build-essential libfl-dev
 
       - name: Build Ash parser
         working-directory: ./analysis
