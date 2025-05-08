@@ -1,2 +1,2 @@
-let username: string = read(string);
+let username: string = read();
 echo("Hi, " + username);

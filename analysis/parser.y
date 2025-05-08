@@ -206,7 +206,7 @@ expression_list:
   ;
 
 read_expression:
-    READ LPAREN type RPAREN
+    READ LPAREN RPAREN
   ;
 
 type:

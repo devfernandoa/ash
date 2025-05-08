@@ -65,7 +65,7 @@ literal = integer
         | string
         | boolean ;
 
-read_expression = "read" "(" type ")" ;
+read_expression = "read" "()" ;
 capture_command = "!" "(" command_text ")" ;
 
 type = "int" | "string" | "bool" | "void" ;
