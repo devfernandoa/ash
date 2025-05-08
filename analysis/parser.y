@@ -4,6 +4,9 @@
 
 void yyerror(const char* s);
 int yylex(void);
+
+extern int yylex(void);
+extern FILE *yyin;
 %}
 
 %union {
@@ -27,7 +30,6 @@ int yylex(void);
 %token OR AND NOT
 %token ERROR
 
-// Precedence declarations (lowest to highest)
 %nonassoc OR
 %nonassoc AND
 %left EQ NEQ
@@ -217,7 +219,3 @@ type:
   ;
 
 %%
-
-void yyerror(const char* s) {
-    fprintf(stderr, "Error: %s\n", s);
-}
