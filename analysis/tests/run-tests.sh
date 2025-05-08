@@ -30,11 +30,11 @@ for file in tests/negative/*.ash; do
     echo "→ $file"
     ./ash < "$file" > /dev/null
     if [ $? -ne 0 ]; then
-        echo -e "${GREEN}✔ Correctly failed${NC}"
-        ((PASS_COUNT++))
-    else
         echo -e "${RED}✘ Unexpected pass: $file${NC}"
         ((FAIL_COUNT++))
+    else
+        echo -e "${GREEN}✔ Correctly failed${NC}"
+        ((PASS_COUNT++))
     fi
     echo
 done
