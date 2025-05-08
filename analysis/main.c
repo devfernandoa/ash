@@ -2,7 +2,11 @@
 
 int yyparse(void);
 
-int main() {
-    int result = yyparse();
-    return result;  // returns non-zero if there was a syntax error
+void yyerror(const char* s) {
+    fprintf(stderr, "Error: %s at or near '%s'\n", s);
+}
+
+int main(int argc, char** argv) {
+    yyparse();
+    return 0;
 }
