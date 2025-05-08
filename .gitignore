@@ -1,2 +1,2 @@
-./analysis/lex*
-./analysis/parser.tab*
+analysis/lex.*
+analysis/parser.tab.*
