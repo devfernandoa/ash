@@ -23,7 +23,7 @@ jobs:
           gcc -o ash parser.tab.c lex.yy.c main.c -lfl
 
       - name: Run test suite
-        working-directory: ./analysis/tests
+        working-directory: ./analysis
         run: |
           chmod +x run-tests.sh
           ./run-tests.sh
