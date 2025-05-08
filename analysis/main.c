@@ -3,8 +3,6 @@
 int yyparse(void);
 
 int main() {
-    printf("Enter Ash code:\n");
-    yyparse();
-    return 0;
-
+    int result = yyparse();
+    return result;  // ✅ returns non-zero if there was a syntax error
 }
