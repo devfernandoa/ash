@@ -43,9 +43,9 @@ echo -e "${YELLOW}Summary:${NC}"
 echo -e "${GREEN}✔ Total passed: $PASS_COUNT${NC}"
 
 if [ $FAIL_COUNT -ne 0 ]; then
-    echo -e "${GREEN}✔✔✔ All tests passed! ✔✔✔ ${NC}"
+    echo -e "${RED}✘ Total failed: $FAIL_COUNT${NC}"
     exit 1
 else
-    echo -e "${RED}✘ Total failed: $FAIL_COUNT${NC}"
+    echo -e "${GREEN}✔✔✔ All tests passed! ✔✔✔ ${NC}"
     exit 0
 fi
