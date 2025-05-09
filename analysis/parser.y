@@ -7,6 +7,11 @@ int yylex(void);
 
 extern int yylex(void);
 extern FILE *yyin;
+
+extern int yylineno;
+
+extern int yylineno;
+extern char* yytext;
 %}
 
 %union {
